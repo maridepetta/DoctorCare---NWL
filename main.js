@@ -2,11 +2,26 @@
 //number = numero
 //boolean (true/false)
 
+window.addEventListener('scroll', onScroll)
+
 function onScroll() {
+  ShowNavOnScroll()
+  showBackToTopButtonOnScroll()
+}
+
+function ShowNavOnScroll() {
   if (scrollY > 0) {
     navigation.classList.add('scroll')
   } else {
     navigation.classList.remove('scroll')
+  }
+}
+
+function showBackToTopButtonOnScroll() {
+  if (scrollY > 550) {
+    backToTopButton.classList.add('show')
+  } else {
+    backToTopButton.classList.remove('show')
   }
 }
 
@@ -17,3 +32,20 @@ function openMenu() {
 function closeMenu() {
   document.body.classList.remove('menu-expanded')
 }
+
+ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 700
+}).reveal(
+  `#home, 
+  #home img,
+  #home .stats,
+   #services,
+   #services header,
+   #service .card
+   #about,
+   #about header,
+   #about .content
+   `
+)
